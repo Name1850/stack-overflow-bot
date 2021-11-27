@@ -74,7 +74,7 @@ class LiveUpdates(commands.Cog):
             channels = doc["channels"]
             channels.append(ctx.channel.id)
             new_points = {"$set": {"channels": channels}}
-            self.col.update_one({"serverid": ctx.guild.id}, new_points)
+            self.col.update_one({"tag": tag}, new_points)
         except BaseException:
             self.col.insert_one({"tag": tag, "channels": [ctx.channel.id], "last_url": ""})
 
