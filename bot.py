@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import os
 
-
+token = os.getenv("STACK-OVERFLOW-TOKEN")
 client = commands.Bot(command_prefix=".", help_command=commands.MinimalHelpCommand())
 
 @client.event
@@ -14,4 +14,4 @@ for filename in os.listdir("./cogs"):
         client.load_extension(f"cogs.{filename[:-3]}")
         print(filename, "cog loaded.")
 
-client.run(TOKEN)
+client.run(token)
